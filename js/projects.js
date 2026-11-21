@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
  * CS-554 Assignment 1: Projects Renderer & Dynamic Filters (js/projects.js)
- * Safe DOM manipulation (zero .innerHTML), combined filtering, and live updates.
+ * Safe DOM manipulation (zero unsafe markup string parsing), combined filtering, and live updates.
  * Bonus Feature: Accessible native <dialog> modal with backdrop close & focus restoration.
  * ==========================================================================
  */
@@ -39,7 +39,7 @@
       id: 'project-3',
       title: 'AST Static Code Linter',
       description: 'A command-line and browser linter parsing JavaScript/TypeScript Abstract Syntax Trees (AST) to detect anti-patterns and DOM vulnerabilities.',
-      extendedDetails: 'Parses code into token streams and AST nodes, applying visitor pattern rules to flag unsanitized innerHTML injections, memory leaks, and accessibility omissions.',
+      extendedDetails: 'Parses code into token streams and AST nodes, applying visitor pattern rules to flag unsanitized DOM string injections, memory leaks, and accessibility omissions.',
       tech: ['TypeScript', 'JavaScript', 'Compiler Design'],
       year: 2026,
       link: 'https://github.com/example/ast-code-linter',
@@ -103,7 +103,7 @@
 
   /**
    * Safely create a project card DOM element.
-   * SECURITY RULE: Never use .innerHTML; strictly use document.createElement,
+   * SECURITY RULE: Never use unsafe markup parsing; strictly use document.createElement,
    * textContent, setAttribute, and appendChild.
    *
    * @param {Object} project
