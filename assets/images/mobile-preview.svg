@@ -1,57 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" role="img" aria-label="Mobile browser mockup of Basim Kazmi Portfolio at 390px viewport">
   <!-- Mobile Device Shell -->
-  <rect width="390" height="844" rx="40" fill="#0f172a"/>
+  <rect width="390" height="844" rx="32" fill="#18181b"/>
   <!-- Screen Area -->
-  <rect x="12" y="12" width="366" height="820" rx="32" fill="#f8fafc"/>
-  <!-- Dynamic Island / Speaker notch -->
-  <rect x="135" y="20" width="120" height="26" rx="13" fill="#0f172a"/>
+  <rect x="10" y="10" width="370" height="824" rx="24" fill="#faf7f2"/>
+  <!-- Speaker notch -->
+  <rect x="135" y="18" width="120" height="22" rx="11" fill="#18181b"/>
 
   <!-- Mobile Site Header -->
-  <g transform="translate(12, 55)">
-    <rect width="366" height="60" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-    <text x="20" y="38" fill="#1d4ed8" font-family="system-ui, sans-serif" font-size="18" font-weight="bold">Basim Kazmi</text>
+  <g transform="translate(10, 50)">
+    <rect width="370" height="55" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+    <text x="18" y="34" fill="#be185d" font-family="system-ui, sans-serif" font-size="17" font-weight="bold">Basim Kazmi</text>
     <!-- Theme Toggle -->
-    <rect x="285" y="17" width="60" height="26" rx="13" fill="#e2e8f0"/>
-    <text x="315" y="34" fill="#0f172a" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">☀️ Light</text>
+    <rect x="290" y="14" width="62" height="26" rx="13" fill="#f0ece3" stroke="#d4d4d8" stroke-width="1"/>
+    <text x="321" y="31" fill="#18181b" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">☀️ Light</text>
   </g>
 
   <!-- Mobile Viewport Content -->
-  <g transform="translate(24, 130)">
+  <g transform="translate(20, 120)">
     <!-- Avatar -->
-    <circle cx="171" cy="55" r="45" fill="#3b82f6" stroke="#1d4ed8" stroke-width="3"/>
-    <circle cx="171" cy="45" r="18" fill="#fbcfe8"/>
-    <path d="M142 90 Q171 70 200 90 Z" fill="#0f172a"/>
+    <circle cx="175" cy="50" r="45" fill="#fbcfe8" stroke="#be185d" stroke-width="2.5"/>
+    <circle cx="175" cy="40" r="18" fill="#faf7f2"/>
+    <path d="M148 85 Q175 65 202 85 Z" fill="#18181b"/>
 
     <!-- Hero Text -->
-    <text x="171" y="125" fill="#1d4ed8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="1">HI THERE, I AM</text>
-    <text x="171" y="155" fill="#0f172a" font-family="system-ui, sans-serif" font-size="26" font-weight="800" text-anchor="middle">Basim Kazmi</text>
-    <text x="171" y="180" fill="#475569" font-family="system-ui, sans-serif" font-size="14" font-weight="600" text-anchor="middle">Full-Stack Web Developer</text>
+    <text x="175" y="118" fill="#be185d" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="1">HI THERE, I AM</text>
+    <text x="175" y="146" fill="#18181b" font-family="system-ui, sans-serif" font-size="24" font-weight="800" text-anchor="middle">Basim Kazmi</text>
+    <text x="175" y="170" fill="#3f3f46" font-family="system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Software &amp; Systems Developer</text>
 
-    <text x="171" y="215" fill="#64748b" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Crafting accessible, fast, and standards-compliant</text>
-    <text x="171" y="235" fill="#64748b" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">web systems with zero bloated frameworks.</text>
+    <text x="175" y="200" fill="#52525b" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Machine learning pipelines, C++ compilers,</text>
+    <text x="175" y="218" fill="#52525b" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">and responsive accessible web systems.</text>
 
     <!-- CTAs Stacked for Mobile -->
-    <rect x="30" y="260" width="282" height="42" rx="8" fill="#1d4ed8"/>
-    <text x="171" y="286" fill="#ffffff" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Explore Projects</text>
+    <rect x="30" y="240" width="290" height="38" rx="4" fill="#be185d"/>
+    <text x="175" y="264" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Explore Projects</text>
 
-    <rect x="30" y="312" width="282" height="42" rx="8" fill="none" stroke="#cbd5e1" stroke-width="2"/>
-    <text x="171" y="338" fill="#0f172a" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Get in Touch</text>
+    <rect x="30" y="286" width="290" height="38" rx="4" fill="none" stroke="#d4d4d8" stroke-width="1.5"/>
+    <text x="175" y="310" fill="#18181b" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Get in Touch</text>
 
     <!-- Project Card Preview -->
-    <rect x="10" y="375" width="322" height="280" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-    <rect x="10" y="375" width="322" height="120" rx="12" fill="#0f172a"/>
-    <text x="171" y="440" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Web Audio Synthesizer</text>
+    <rect x="10" y="340" width="330" height="260" rx="8" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+    <rect x="10" y="340" width="330" height="110" rx="8" fill="#faf7f2" stroke="#d4d4d8" stroke-width="1"/>
+    <text x="175" y="400" fill="#be185d" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Solar Energy Forecasting</text>
 
-    <text x="25" y="520" fill="#0f172a" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">Real-time Audio DSP</text>
-    <text x="25" y="542" fill="#64748b" font-family="system-ui, sans-serif" font-size="11">FFT spectrum visualizer &amp; polyphonic synth.</text>
+    <text x="25" y="475" fill="#18181b" font-family="system-ui, sans-serif" font-size="14" font-weight="bold">ML Power Prediction</text>
+    <text x="25" y="495" fill="#52525b" font-family="system-ui, sans-serif" font-size="11">Random Forest regressor with OpenWeather API.</text>
 
-    <rect x="25" y="560" width="75" height="22" rx="4" fill="#e0f2fe"/>
-    <text x="62" y="575" fill="#0369a1" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">JavaScript</text>
+    <rect x="25" y="515" width="60" height="20" rx="3" fill="#fdf2f8" stroke="#fbcfe8" stroke-width="1"/>
+    <text x="55" y="529" fill="#9d174d" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Python</text>
 
-    <rect x="110" y="560" width="95" height="22" rx="4" fill="#e0f2fe"/>
-    <text x="157" y="575" fill="#0369a1" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Web Audio API</text>
+    <rect x="95" y="515" width="105" height="20" rx="3" fill="#fdf2f8" stroke="#fbcfe8" stroke-width="1"/>
+    <text x="147" y="529" fill="#9d174d" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Machine Learning</text>
 
-    <rect x="25" y="600" width="110" height="34" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
-    <text x="80" y="622" fill="#0f172a" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">View Details</text>
+    <rect x="25" y="550" width="95" height="30" rx="4" fill="#faf7f2" stroke="#d4d4d8" stroke-width="1"/>
+    <text x="72" y="570" fill="#18181b" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">View Details</text>
   </g>
 </svg>

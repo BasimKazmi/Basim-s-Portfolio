@@ -16,14 +16,22 @@
 
 ## 1. Project Overview & Architectural Highlights
 
-This project is a high-performance, fully accessible, mobile-first 3-page developer portfolio built strictly using vanilla web standards: **Semantic HTML5**, **hand-written CSS3 with design tokens**, and **Vanilla JavaScript (ES6+)**.
+This project is a fast, accessible, mobile-first 3-page developer portfolio built strictly using vanilla web standards: **Semantic HTML5**, **handcrafted CSS3 with design tokens**, and **Vanilla JavaScript (ES6+)**.
 
-### Hard Constraints & Guarantees
-* **Zero CSS Frameworks or Preprocessors:** No Bootstrap, Tailwind, Sass, or Less. Handcrafted modern CSS using Custom Properties (`:root`), Flexbox, and CSS Grid.
-* **Zero JavaScript Frameworks or Libraries:** No React, Vue, jQuery, or Alpine. Clean, idiomatic vanilla ES6+.
-* **Security & DOM Safety:** **NEVER** uses `.innerHTML` or `insertAdjacentHTML` for data-driven rendering. Every element is instantiated using `document.createElement`, `textContent`, `setAttribute`, and `appendChild`.
-* **Single Shared Stylesheet:** All 3 pages share [`css/styles.css`](file:///c:/Users/User/Documents/Work/AdWeb/Assignment%201/css/styles.css), maintaining a consistent design language without redundant `<style>` tags or inline styling.
-* **Strict W3C Compliance:** Validates with **0 errors and 0 warnings** on the W3C Markup and CSS Validators.
+### Color Theme & Design Tokens
+* **Palette:** Soft Cream (`#faf7f2`), Silver (`#d4d4d8`), and Deep Magenta (`#be185d` for Light mode / `#f472b6` for Dark mode).
+* **Beginner-Friendly, Clean Styling:** Built without heavy visual clutter or fragile one-liners. Clean, readable borders, high-contrast typography, and accessible interactive states.
+* **Dual Theme Engine:** Supports automatic OS preference detection via `@media (prefers-color-scheme: dark)` and manual toggle via `[data-theme]` with `localStorage` persistence.
+
+### Real Project Showcase
+All showcased projects are real open-source systems pulled directly from **[BasimKazmi's GitHub Repositories](https://api.github.com/users/BasimKazmi/repos?per_page=100)**:
+1. **Forecasting Solar Power Efficiency** — Python, Random Forest Regressor, OpenWeather API, Seaborn
+2. **Crime AI Solver via Classical AI** — Python, State-Space Search (A*, DFS, BFS), Heuristics
+3. **DDoS Attack Detection with ML** — Python, Network Flow Anomaly Classification
+4. **Semantic Analyzer in C++** — Modern C++, Hierarchical Symbol Tables, Static Type-Checking
+5. **Syntax Analyzer in C++** — Modern C++, Recursive-Descent Parsing, Context-Free Grammars
+6. **Multiplayer Game Stats Tracker** — Relational Database Architecture (3NF), MySQL
+7. **Used Cars Price Valuation EDA** — Python, Data Cleaning, Correlation Analysis, Regression Modeling
 
 ---
 
