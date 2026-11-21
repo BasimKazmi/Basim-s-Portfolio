@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360" role="img" aria-label="Used Cars Prices EDA regression and distribution plot">
+  <rect width="600" height="360" fill="#faf7f2"/>
+  <rect x="30" y="30" width="540" height="300" rx="8" fill="#ffffff" stroke="#d4d4d8" stroke-width="2"/>
+  <text x="300" y="65" fill="#18181b" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Used Car Price Valuation EDA &amp; Regression</text>
+  <!-- Axes -->
+  <line x1="100" y1="260" x2="500" y2="260" stroke="#a1a1aa" stroke-width="2"/>
+  <line x1="100" y1="260" x2="100" y2="100" stroke="#a1a1aa" stroke-width="2"/>
+  <text x="300" y="295" fill="#52525b" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Mileage / Age (Years)</text>
+  <!-- Scatter points -->
+  <circle cx="140" cy="130" r="4" fill="#be185d"/>
+  <circle cx="170" cy="150" r="4" fill="#be185d"/>
+  <circle cx="210" cy="140" r="4" fill="#be185d"/>
+  <circle cx="250" cy="175" r="4" fill="#be185d"/>
+  <circle cx="300" cy="190" r="4" fill="#be185d"/>
+  <circle cx="340" cy="180" r="4" fill="#be185d"/>
+  <circle cx="390" cy="220" r="4" fill="#be185d"/>
+  <circle cx="440" cy="235" r="4" fill="#be185d"/>
+  <!-- Trendline -->
+  <line x1="120" y1="125" x2="480" y2="250" stroke="#be185d" stroke-width="3"/>
+  <text x="380" y="140" fill="#be185d" font-family="monospace" font-size="12" font-weight="bold">R² = 0.88 Regression</text>
+</svg>

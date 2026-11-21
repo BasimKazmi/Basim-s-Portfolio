@@ -1,8 +1,10 @@
 /**
  * ==========================================================================
  * CS-554 Assignment 1: Projects Renderer & Dynamic Filters (js/projects.js)
- * Safe DOM manipulation (zero unsafe markup string parsing), combined filtering, and live updates.
- * Bonus Feature: Accessible native <dialog> modal with backdrop close & focus restoration.
+ * Developer: Basim Kazmi (https://github.com/BasimKazmi)
+ *
+ * Safe DOM manipulation (strictly document.createElement / textContent),
+ * combined search & category filtering, and accessible <dialog> modal.
  * ==========================================================================
  */
 
@@ -10,74 +12,86 @@
   'use strict';
 
   /**
-   * Project dataset (minimum 6 projects with rich technical metadata).
+   * Real project dataset populated from Basim Kazmi's GitHub repositories:
+   * https://api.github.com/users/BasimKazmi/repos?per_page=100
    */
   const projects = [
     {
-      id: 'project-1',
-      title: 'Web Audio Synthesizer & Visualizer',
-      description: 'An in-browser digital audio synthesizer featuring real-time fast Fourier transform (FFT) spectrum visualization and custom frequency modulation oscillators.',
-      extendedDetails: 'Implemented using the Web Audio API with zero external frameworks. Features polyphonic oscillators, envelope generators (ADSR), low-pass biquad filters, and hardware-accelerated 60 FPS oscilloscope rendering on an HTML5 Canvas.',
-      tech: ['JavaScript', 'Web Audio API', 'HTML/CSS'],
+      id: 'solar-power-efficiency',
+      title: 'Forecasting Solar Power Efficiency',
+      description: 'An end-to-end machine learning pipeline predicting solar power generation efficiency from atmospheric telemetry and OpenWeather API data.',
+      extendedDetails: 'Engineered with Python and a Random Forest Regressor. Features robust data preprocessing, real-time weather integration via the OpenWeather API, feature correlation analysis, and custom Seaborn visualizations.',
+      tech: ['Python', 'Machine Learning', 'API Integration'],
       year: 2026,
-      link: 'https://github.com/example/web-audio-synth',
+      link: 'https://github.com/BasimKazmi/Forecasting-Solar-Power-Efficiency',
       image: 'assets/images/project-1.svg',
-      imageAlt: 'Screenshot of Web Audio Synthesizer frequency spectrum and controls'
+      imageAlt: 'Solar Power Efficiency forecasting diagram with regression curve'
     },
     {
-      id: 'project-2',
-      title: 'Distributed Raft Consensus Engine',
-      description: 'A lightweight distributed key-value store implementing the Raft consensus algorithm for fault-tolerant state machine replication.',
-      extendedDetails: 'Features leader election, log replication, heartbeats, and cluster membership reconfiguration. Built from scratch with Python asyncio and tested under simulated packet loss and node partition scenarios.',
-      tech: ['Python', 'Algorithms', 'AsyncIO'],
+      id: 'crime-ai-solver',
+      title: 'Crime AI Solver via Classical AI',
+      description: 'An automated crime resolution solver utilizing classical Artificial Intelligence state-space search algorithms and heuristic evaluations.',
+      extendedDetails: 'Implements classical AI search strategies including Depth-First Search (DFS), Breadth-First Search (BFS), and A* heuristic search to navigate constraint-satisfaction state spaces and solve complex deduction puzzles.',
+      tech: ['Python', 'Classical AI', 'Algorithms'],
       year: 2025,
-      link: 'https://github.com/example/raft-consensus-engine',
+      link: 'https://github.com/BasimKazmi/Crime-AI-solver-using-Classical-AI',
       image: 'assets/images/project-2.svg',
-      imageAlt: 'Diagram showing Raft cluster node topology and replication streams'
+      imageAlt: 'Classical AI state-space graph search tree diagram'
     },
     {
-      id: 'project-3',
-      title: 'AST Static Code Linter',
-      description: 'A command-line and browser linter parsing JavaScript/TypeScript Abstract Syntax Trees (AST) to detect anti-patterns and DOM vulnerabilities.',
-      extendedDetails: 'Parses code into token streams and AST nodes, applying visitor pattern rules to flag unsanitized DOM string injections, memory leaks, and accessibility omissions.',
-      tech: ['TypeScript', 'JavaScript', 'Compiler Design'],
-      year: 2026,
-      link: 'https://github.com/example/ast-code-linter',
-      image: 'assets/images/project-3.svg',
-      imageAlt: 'Visual representation of an Abstract Syntax Tree node hierarchy'
-    },
-    {
-      id: 'project-4',
-      title: 'Interactive Neural Network Playground',
-      description: 'Educational tool for configuring, training, and visualizing feedforward neural networks and backpropagation decision boundaries in real time.',
-      extendedDetails: 'Calculates matrix multiplications and activation gradients directly in vanilla JavaScript and Python backend. Visualizes weight updates and loss convergence graphs dynamically.',
-      tech: ['Python', 'JavaScript', 'Machine Learning'],
+      id: 'ddos-detection-ml',
+      title: 'DDoS Attack Detection with ML',
+      description: 'Machine learning classification system designed to detect and mitigate Distributed Denial of Service (DDoS) network anomalies in real time.',
+      extendedDetails: 'Trained on high-dimensional network flow datasets to distinguish legitimate traffic from SYN flood, UDP flood, and HTTP volumetric attacks, minimizing false positives with balanced precision-recall curves.',
+      tech: ['Python', 'Machine Learning', 'Cyber Security'],
       year: 2025,
-      link: 'https://github.com/example/neural-net-playground',
+      link: 'https://github.com/BasimKazmi/DDoS-Detection-ML',
+      image: 'assets/images/project-3.svg',
+      imageAlt: 'DDoS network traffic classification and anomaly detection diagram'
+    },
+    {
+      id: 'semantic-analyzer-cpp',
+      title: 'Semantic Analyzer in C++',
+      description: 'The semantic analysis phase of a programming language compiler, validating type systems, scope rules, and identifier declarations.',
+      extendedDetails: 'Constructed from scratch in modern C++. Builds and traverses hierarchical symbol tables, conducts static type inference and checking, flags out-of-scope variable usage, and detects semantic discrepancies prior to code generation.',
+      tech: ['C++', 'Compiler Design', 'Data Structures'],
+      year: 2025,
+      link: 'https://github.com/BasimKazmi/Semantic-Analyzer',
       image: 'assets/images/project-4.svg',
-      imageAlt: 'Neural network layer visualization with weights and node activations'
+      imageAlt: 'Compiler symbol table hierarchy and type-checking diagram'
     },
     {
-      id: 'project-5',
-      title: 'Agile Kanban Task Flow',
-      description: 'A responsive, keyboard-accessible task management application with column reordering, offline persistence, and tag filtering.',
-      extendedDetails: 'Engineered with native Drag and Drop API and full keyboard equivalent controls (arrow keys and space). Persists board state across browser sessions via localStorage and IndexedDB.',
-      tech: ['JavaScript', 'HTML/CSS', 'LocalStorage'],
-      year: 2026,
-      link: 'https://github.com/example/kanban-task-flow',
+      id: 'syntax-analyzer-cpp',
+      title: 'Syntax Analyzer in C++',
+      description: 'A compiler frontend parser implementing context-free grammar validation, syntax tree generation, and error recovery.',
+      extendedDetails: 'Implements recursive-descent parsing and shift-reduce validation for context-free grammars. Emits concrete parse trees and delivers precise line-number error reporting for syntactic violations.',
+      tech: ['C++', 'Parsing', 'Compilers'],
+      year: 2025,
+      link: 'https://github.com/BasimKazmi/Syntax-Analyzer-in-C-',
       image: 'assets/images/project-5.svg',
-      imageAlt: 'Agile Kanban task board with To Do, In Progress, and Done columns'
+      imageAlt: 'Context-free grammar syntax tree diagram'
     },
     {
-      id: 'project-6',
-      title: 'Atmospheric Telemetry Dashboard',
-      description: 'Real-time meteorological analytics dashboard aggregating multi-station weather sensor feeds and visualizing climate trends.',
-      extendedDetails: 'Streams live telemetry over WebSockets, calculates microclimate anomalies, and renders SVG charts with fluid typography and WCAG AA contrast standards.',
-      tech: ['TypeScript', 'JavaScript', 'HTML/CSS'],
-      year: 2026,
-      link: 'https://github.com/example/weather-telemetry',
+      id: 'game-stats-tracker',
+      title: 'Multiplayer Game Stats Tracker',
+      description: 'A relational database architecture and query engine written in MySQL for tracking multiplayer game telemetry, ranks, and player statistics.',
+      extendedDetails: 'Designed with full third normal form (3NF) normalization. Includes structured SQL scripts, foreign key constraint cascades, indexed leaderboards, and complex joins for calculating player kill-death ratios and match summaries.',
+      tech: ['SQL', 'Database Design', 'MySQL'],
+      year: 2025,
+      link: 'https://github.com/BasimKazmi/Multiplayer-Game-Stats-Tracker',
       image: 'assets/images/project-6.svg',
-      imageAlt: 'Atmospheric telemetry station dashboard with temperature and humidity trends'
+      imageAlt: 'Relational database schema and entity relationship mockup'
+    },
+    {
+      id: 'used-cars-eda',
+      title: 'Used Cars Price Valuation EDA',
+      description: 'Exploratory data analysis and predictive regression modeling determining secondary automobile market valuations based on vehicle attributes.',
+      extendedDetails: 'Comprehensive data cleaning pipeline handling missing values, encoding categorical vehicle features, removing outliers, and training regression models to forecast resale prices based on mileage and condition.',
+      tech: ['Python', 'Data Science', 'Data Analysis'],
+      year: 2025,
+      link: 'https://github.com/BasimKazmi/Used-Cars-Prices-EDA-Data-Science-and-Technologies-project-',
+      image: 'assets/images/project-7.svg',
+      imageAlt: 'Used car price regression and feature distribution visualization'
     }
   ];
 
@@ -98,12 +112,11 @@
   const modalLink = document.getElementById('modal-link');
   const modalCloseBtn = document.getElementById('modal-close-btn');
 
-  // Track element that opened modal for focus restoration
   let lastFocusedTrigger = null;
 
   /**
    * Safely create a project card DOM element.
-   * SECURITY RULE: Never use unsafe markup parsing; strictly use document.createElement,
+   * SECURITY RULE: Never use unsafe markup strings; strictly use document.createElement,
    * textContent, setAttribute, and appendChild.
    *
    * @param {Object} project
@@ -114,7 +127,7 @@
     card.className = 'project-card';
     card.setAttribute('data-id', project.id);
 
-    // Thumbnail image
+    // Thumbnail image with explicit dimensions for CLS prevention
     const img = document.createElement('img');
     img.className = 'project-card-image';
     img.src = project.image;
@@ -128,7 +141,7 @@
     const body = document.createElement('div');
     body.className = 'project-card-body';
 
-    // Title (h2 inside article for semantic hierarchy under h1)
+    // Title (h2 inside article for strict hierarchy under page h1)
     const title = document.createElement('h2');
     title.className = 'project-card-title';
     title.textContent = project.title;
@@ -146,7 +159,7 @@
 
     const techList = document.createElement('ul');
     techList.className = 'tech-badge-list';
-    techList.setAttribute('aria-label', `Technologies for ${project.title}`);
+    techList.setAttribute('aria-label', `Technologies used in ${project.title}`);
 
     project.tech.forEach((techItem) => {
       const li = document.createElement('li');
@@ -162,7 +175,7 @@
     const actions = document.createElement('div');
     actions.className = 'project-card-actions';
 
-    // View Details button (triggers modal dialog)
+    // View Details button (opens native dialog)
     const detailsBtn = document.createElement('button');
     detailsBtn.type = 'button';
     detailsBtn.className = 'btn btn-secondary btn-sm project-details-btn';
@@ -178,7 +191,7 @@
     repoLink.target = '_blank';
     repoLink.rel = 'noopener noreferrer';
     repoLink.className = 'btn btn-primary btn-sm';
-    repoLink.textContent = 'GitHub';
+    repoLink.textContent = 'GitHub Repo';
     repoLink.setAttribute('aria-label', `View source code for ${project.title} on GitHub`);
     actions.appendChild(repoLink);
 
@@ -215,7 +228,7 @@
       gridContainer.removeChild(gridContainer.firstChild);
     }
 
-    // Render cards
+    // Render cards safely
     filtered.forEach((project) => {
       gridContainer.appendChild(createProjectCard(project));
     });
@@ -260,7 +273,7 @@
       modalLink.setAttribute('aria-label', `View ${project.title} on GitHub`);
     }
 
-    // Populate tech list badges safely
+    // Populate tech badges safely
     if (modalTechList) {
       while (modalTechList.firstChild) {
         modalTechList.removeChild(modalTechList.firstChild);
