@@ -2,6 +2,7 @@
  * ==========================================================================
  * CS-554 Assignment 1: Projects Renderer & Dynamic Filters (js/projects.js)
  * Safe DOM manipulation (zero .innerHTML), combined filtering, and live updates.
+ * Bonus Feature: Accessible native <dialog> modal with backdrop close & focus restoration.
  * ==========================================================================
  */
 
@@ -87,6 +88,19 @@
   const statusContainer = document.getElementById('projects-status');
   const noProjectsMsg = document.getElementById('no-projects-msg');
 
+  // Bonus <dialog> Elements
+  const modalDialog = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalYear = document.getElementById('modal-year');
+  const modalTechList = document.getElementById('modal-tech');
+  const modalDetails = document.getElementById('modal-details');
+  const modalLink = document.getElementById('modal-link');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+
+  // Track element that opened modal for focus restoration
+  let lastFocusedTrigger = null;
+
   /**
    * Safely create a project card DOM element.
    * SECURITY RULE: Never use .innerHTML; strictly use document.createElement,
@@ -114,7 +128,7 @@
     const body = document.createElement('div');
     body.className = 'project-card-body';
 
-    // Title (h3)
+    // Title (h2 inside article for semantic hierarchy under h1)
     const title = document.createElement('h2');
     title.className = 'project-card-title';
     title.textContent = project.title;
@@ -148,16 +162,17 @@
     const actions = document.createElement('div');
     actions.className = 'project-card-actions';
 
-    // View Details button (for modal)
+    // View Details button (triggers modal dialog)
     const detailsBtn = document.createElement('button');
     detailsBtn.type = 'button';
     detailsBtn.className = 'btn btn-secondary btn-sm project-details-btn';
     detailsBtn.textContent = 'View Details';
     detailsBtn.setAttribute('data-project-id', project.id);
-    detailsBtn.setAttribute('aria-label', `View full details for ${project.title}`);
+    detailsBtn.setAttribute('aria-label', `View details for ${project.title}`);
+    detailsBtn.addEventListener('click', () => openProjectModal(project.id, detailsBtn));
     actions.appendChild(detailsBtn);
 
-    // Source link
+    // Source repository link
     const repoLink = document.createElement('a');
     repoLink.href = project.link;
     repoLink.target = '_blank';
@@ -221,6 +236,92 @@
   }
 
   /**
+   * Open the bonus <dialog> modal for a given project.
+   * Restores focus to the triggering button upon close.
+   *
+   * @param {string} projectId
+   * @param {HTMLElement} triggerElement
+   */
+  function openProjectModal(projectId, triggerElement) {
+    if (!modalDialog) return;
+
+    const project = projects.find((p) => p.id === projectId);
+    if (!project) return;
+
+    lastFocusedTrigger = triggerElement;
+
+    // Populate modal fields safely using .textContent and safe DOM APIs
+    if (modalTitle) modalTitle.textContent = project.title;
+    if (modalDesc) modalDesc.textContent = project.description;
+    if (modalYear) modalYear.textContent = String(project.year);
+    if (modalDetails) modalDetails.textContent = project.extendedDetails;
+    if (modalLink) {
+      modalLink.href = project.link;
+      modalLink.setAttribute('aria-label', `View ${project.title} on GitHub`);
+    }
+
+    // Populate tech list badges safely
+    if (modalTechList) {
+      while (modalTechList.firstChild) {
+        modalTechList.removeChild(modalTechList.firstChild);
+      }
+      project.tech.forEach((tech) => {
+        const li = document.createElement('li');
+        li.className = 'tech-badge';
+        li.textContent = tech;
+        modalTechList.appendChild(li);
+      });
+    }
+
+    // Open modal using native dialog API
+    modalDialog.showModal();
+    if (modalCloseBtn) {
+      modalCloseBtn.focus();
+    }
+  }
+
+  /**
+   * Close the project modal dialog and restore focus.
+   */
+  function closeProjectModal() {
+    if (!modalDialog || !modalDialog.open) return;
+    modalDialog.close();
+  }
+
+  /**
+   * Initialize modal event listeners (close button, backdrop click, Escape key, focus restoration).
+   */
+  function initModal() {
+    if (!modalDialog) return;
+
+    // Close button click
+    if (modalCloseBtn) {
+      modalCloseBtn.addEventListener('click', closeProjectModal);
+    }
+
+    // Close when clicking the backdrop (outside modal dialog content)
+    modalDialog.addEventListener('click', (event) => {
+      const rect = modalDialog.getBoundingClientRect();
+      const isClickInside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+
+      if (!isClickInside) {
+        closeProjectModal();
+      }
+    });
+
+    // Native dialog close event (triggered by .close() and native Escape key)
+    modalDialog.addEventListener('close', () => {
+      if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+        lastFocusedTrigger.focus();
+      }
+    });
+  }
+
+  /**
    * Initialize event listeners and render initial projects grid.
    */
   function initProjects() {
@@ -235,6 +336,9 @@
       techFilter.addEventListener('change', renderFilteredProjects);
     }
 
+    // Initialize bonus dialog modal
+    initModal();
+
     // Initial render
     renderFilteredProjects();
   }
@@ -244,7 +348,4 @@
   } else {
     initProjects();
   }
-
-  // Export projects array for modal handler
-  window.portfolioProjects = projects;
 })();
