@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore featured web development and systems engineering projects by Alex Rivera with interactive search and technology filters.">
+  <title>Projects | Alex Rivera Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Immediate theme check to prevent flash of wrong theme (FOUC) */
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/projects.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" aria-label="Alex Rivera home page">
+        <span class="brand-text">Alex Rivera</span>
+      </a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link" aria-current="page">Projects</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☀️</span>
+          <span class="theme-label">Light</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-content">
+    <div class="page-header-section">
+      <div class="section-container">
+        <h1 class="page-title">Featured Projects</h1>
+        <p class="page-subtitle">
+          An interactive showcase of full-stack web applications, systems tools, and accessible user interfaces. Filter by technology or search keywords in real time.
+        </p>
+      </div>
+    </div>
+
+    <!-- Filter Controls Section -->
+    <section class="filters-section" aria-label="Project filter controls">
+      <div class="section-container">
+        <form class="filters-form" id="projects-filter-form" onsubmit="event.preventDefault();">
+          <div class="filter-group">
+            <label for="search-input" class="filter-label">Search projects by title or keyword:</label>
+            <input type="search" id="search-input" name="search" class="filter-input" placeholder="e.g. Audio, Python, Consensus, AST..." autocomplete="off">
+          </div>
+          <div class="filter-group">
+            <label for="tech-filter" class="filter-label">Filter by technology:</label>
+            <select id="tech-filter" name="tech" class="filter-select">
+              <option value="all">All Technologies</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="HTML/CSS">HTML/CSS</option>
+              <option value="Python">Python</option>
+              <option value="Web Audio API">Web Audio API</option>
+              <option value="TypeScript">TypeScript</option>
+            </select>
+          </div>
+        </form>
+
+        <!-- Live Status Region for Assistive Technology -->
+        <div id="projects-status" class="projects-status" aria-live="polite">
+          Showing 6 of 6 projects
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <section class="projects-display-section" aria-label="Project cards list">
+      <div class="section-container">
+        <!-- Rendered dynamically by js/projects.js via safe DOM APIs -->
+        <div id="projects-grid" class="projects-grid"></div>
+
+        <!-- Empty state message -->
+        <div id="no-projects-msg" class="empty-state" hidden>
+          <p class="empty-state-title">No projects found</p>
+          <p class="empty-state-text">No projects matched your combined search query and technology filter. Please try clearing or modifying your filters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Details Modal (Dialog) -->
+    <dialog id="project-modal" class="project-modal" aria-labelledby="modal-title" aria-describedby="modal-desc">
+      <div class="modal-dialog-content">
+        <header class="modal-header">
+          <h2 id="modal-title" class="modal-title">Project Details</h2>
+          <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Close project details dialog">&times;</button>
+        </header>
+        <div class="modal-body">
+          <p id="modal-desc" class="modal-desc"></p>
+          <div class="modal-meta-grid">
+            <div class="modal-meta-item">
+              <span class="modal-meta-label">Year:</span>
+              <span id="modal-year" class="modal-meta-value"></span>
+            </div>
+            <div class="modal-meta-item">
+              <span class="modal-meta-label">Role:</span>
+              <span id="modal-role" class="modal-meta-value">Lead Developer</span>
+            </div>
+          </div>
+          <div class="modal-tech-section">
+            <span class="modal-meta-label">Technologies Used:</span>
+            <ul id="modal-tech" class="tech-badge-list"></ul>
+          </div>
+          <div class="modal-details-section">
+            <span class="modal-meta-label">Architecture &amp; Highlights:</span>
+            <p id="modal-details" class="modal-extended-details"></p>
+          </div>
+          <div class="modal-actions">
+            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Repository on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p class="footer-title">Alex Rivera</p>
+        <p class="footer-tagline">Building clean, accessible, standards-compliant web systems.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Social and External Links">
+        <ul class="footer-links">
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-copy">
+        <p>&copy; 2026 Alex Rivera. Built with semantic HTML, modern CSS, and vanilla JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

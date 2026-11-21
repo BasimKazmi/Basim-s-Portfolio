@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="280" height="280" role="img" aria-label="Portrait illustration of Alex Rivera">
+  <defs>
+    <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="shirt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <clipPath id="circle-clip">
+      <circle cx="140" cy="140" r="130"/>
+    </clipPath>
+  </defs>
+  <circle cx="140" cy="140" r="136" fill="url(#avatar-grad)" stroke="#60a5fa" stroke-width="4"/>
+  <g clip-path="url(#circle-clip)">
+    <rect width="280" height="280" fill="#e2e8f0"/>
+    <!-- Body / Shoulders -->
+    <path d="M60 270 Q140 220 220 270 L230 300 L50 300 Z" fill="url(#shirt-grad)"/>
+    <!-- Neck -->
+    <rect x="122" y="150" width="36" height="45" rx="10" fill="#fbcfe8"/>
+    <!-- Head -->
+    <ellipse cx="140" cy="130" rx="42" ry="50" fill="#fbcfe8"/>
+    <!-- Hair -->
+    <path d="M96 125 C96 85 110 70 140 70 C170 70 184 85 184 125 C180 95 165 85 140 85 C115 85 100 95 96 125 Z" fill="#1e1e24"/>
+    <!-- Glasses -->
+    <rect x="110" y="120" width="24" height="16" rx="4" fill="none" stroke="#0f172a" stroke-width="3"/>
+    <rect x="146" y="120" width="24" height="16" rx="4" fill="none" stroke="#0f172a" stroke-width="3"/>
+    <line x1="134" y1="128" x2="146" y2="128" stroke="#0f172a" stroke-width="3"/>
+    <!-- Eyes -->
+    <circle cx="122" cy="128" r="3" fill="#0f172a"/>
+    <circle cx="158" cy="128" r="3" fill="#0f172a"/>
+    <!-- Smile -->
+    <path d="M128 152 Q140 162 152 152" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

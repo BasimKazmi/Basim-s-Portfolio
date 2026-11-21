@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360" role="img" aria-label="Distributed Key-Value Store architecture diagram">
+  <rect width="600" height="360" fill="#0f172a"/>
+  <rect x="40" y="30" width="520" height="300" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="300" y="65" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Raft Consensus Cluster Topology</text>
+  <!-- Nodes -->
+  <g transform="translate(100, 110)">
+    <rect width="100" height="70" rx="8" fill="#1e40af" stroke="#60a5fa" stroke-width="2"/>
+    <text x="50" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Node 1</text>
+    <text x="50" y="52" fill="#93c5fd" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Leader</text>
+  </g>
+  <g transform="translate(400, 110)">
+    <rect width="100" height="70" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+    <text x="50" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Node 2</text>
+    <text x="50" y="52" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Follower</text>
+  </g>
+  <g transform="translate(250, 220)">
+    <rect width="100" height="70" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+    <text x="50" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Node 3</text>
+    <text x="50" y="52" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Follower</text>
+  </g>
+  <!-- Replication arrows -->
+  <path d="M 200 145 L 400 145" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 4"/>
+  <path d="M 160 180 L 250 240" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 4"/>
+  <path d="M 440 180 L 350 240" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 4"/>
+</svg>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Alex Rivera for web development inquiries, collaboration opportunities, and technical consultations.">
+  <title>Contact | Alex Rivera Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Immediate theme check to prevent flash of wrong theme (FOUC) */
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/contact.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" aria-label="Alex Rivera home page">
+        <span class="brand-text">Alex Rivera</span>
+      </a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link" aria-current="page">Contact</a></li>
+        </ul>
+        <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☀️</span>
+          <span class="theme-label">Light</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-content">
+    <div class="page-header-section">
+      <div class="section-container">
+        <h1 class="page-title">Get in Touch</h1>
+        <p class="page-subtitle">
+          Have an interesting project, collaboration opportunity, or question about web development? Send a message using the form below.
+        </p>
+      </div>
+    </div>
+
+    <section class="contact-section" aria-label="Contact form section">
+      <div class="section-container contact-container">
+        <!-- Live status banner for submission feedback -->
+        <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <!-- Field 1: Name -->
+          <div class="form-group" id="group-name">
+            <label for="contact-name" class="form-label">
+              Full Name <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="contact-name" 
+              name="name" 
+              class="form-input" 
+              required 
+              minlength="3" 
+              autocomplete="name" 
+              placeholder="e.g. Jordan Smith"
+              aria-describedby="name-error">
+            <p class="error-message" id="name-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Field 2: Email -->
+          <div class="form-group" id="group-email">
+            <label for="contact-email" class="form-label">
+              Email Address <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="contact-email" 
+              name="email" 
+              class="form-input" 
+              required 
+              autocomplete="email" 
+              placeholder="e.g. jordan@example.com"
+              aria-describedby="email-error">
+            <p class="error-message" id="email-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Field 3: Subject -->
+          <div class="form-group" id="group-subject">
+            <label for="contact-subject" class="form-label">
+              Subject <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <select 
+              id="contact-subject" 
+              name="subject" 
+              class="form-select" 
+              required 
+              aria-describedby="subject-error">
+              <option value="">-- Please select an inquiry subject --</option>
+              <option value="collaboration">Project Collaboration</option>
+              <option value="job">Job / Internship Opportunity</option>
+              <option value="freelance">Freelance Contract</option>
+              <option value="general">General Question</option>
+            </select>
+            <p class="error-message" id="subject-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Field 4: Referral Source Radio Group -->
+          <fieldset class="form-group form-fieldset" id="group-source" aria-describedby="source-error">
+            <legend class="form-legend">
+              How did you hear about me? <span class="required-indicator" aria-hidden="true">*</span>
+            </legend>
+            <div class="radio-options-grid">
+              <label class="radio-label">
+                <input type="radio" name="referral_source" value="linkedin" required>
+                <span>LinkedIn</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="referral_source" value="github">
+                <span>GitHub</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="referral_source" value="university">
+                <span>University / Course</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="referral_source" value="other">
+                <span>Other</span>
+              </label>
+            </div>
+            <p class="error-message" id="source-error" aria-live="polite"></p>
+          </fieldset>
+
+          <!-- Field 5: Message -->
+          <div class="form-group" id="group-message">
+            <label for="contact-message" class="form-label">
+              Your Message (minimum 20 characters) <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <textarea 
+              id="contact-message" 
+              name="message" 
+              class="form-textarea" 
+              rows="6" 
+              required 
+              minlength="20" 
+              placeholder="Describe your inquiry, project scope, or message in detail..."
+              aria-describedby="message-error"></textarea>
+            <p class="error-message" id="message-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Field 6: Consent Checkbox -->
+          <div class="form-group form-checkbox-group" id="group-consent">
+            <label class="checkbox-label" for="contact-consent">
+              <input 
+                type="checkbox" 
+                id="contact-consent" 
+                name="consent" 
+                required 
+                aria-describedby="consent-error">
+              <span>I consent to having this form securely process my contact details for response purposes. <span class="required-indicator" aria-hidden="true">*</span></span>
+            </label>
+            <p class="error-message" id="consent-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Field 7: Submit Button -->
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary form-submit-btn">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p class="footer-title">Alex Rivera</p>
+        <p class="footer-tagline">Building clean, accessible, standards-compliant web systems.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Social and External Links">
+        <ul class="footer-links">
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-copy">
+        <p>&copy; 2026 Alex Rivera. Built with semantic HTML, modern CSS, and vanilla JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

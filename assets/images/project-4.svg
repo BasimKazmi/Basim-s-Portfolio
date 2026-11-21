@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360" role="img" aria-label="Interactive Neural Network architecture diagram">
+  <rect width="600" height="360" fill="#0f172a"/>
+  <rect x="40" y="30" width="520" height="300" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="300" y="65" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Deep Feedforward Network Visualizer</text>
+  <!-- Input layer -->
+  <g transform="translate(120, 110)">
+    <circle cx="0" cy="20" r="14" fill="#3b82f6"/>
+    <circle cx="0" cy="70" r="14" fill="#3b82f6"/>
+    <circle cx="0" cy="120" r="14" fill="#3b82f6"/>
+    <circle cx="0" cy="170" r="14" fill="#3b82f6"/>
+  </g>
+  <!-- Hidden layer -->
+  <g transform="translate(300, 85)">
+    <circle cx="0" cy="20" r="14" fill="#8b5cf6"/>
+    <circle cx="0" cy="65" r="14" fill="#8b5cf6"/>
+    <circle cx="0" cy="110" r="14" fill="#8b5cf6"/>
+    <circle cx="0" cy="155" r="14" fill="#8b5cf6"/>
+    <circle cx="0" cy="200" r="14" fill="#8b5cf6"/>
+  </g>
+  <!-- Output layer -->
+  <g transform="translate(480, 135)">
+    <circle cx="0" cy="20" r="14" fill="#10b981"/>
+    <circle cx="0" cy="70" r="14" fill="#10b981"/>
+    <circle cx="0" cy="120" r="14" fill="#10b981"/>
+  </g>
+  <!-- Connecting lines -->
+  <line x1="120" y1="130" x2="300" y2="105" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+  <line x1="120" y1="130" x2="300" y2="150" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="120" y1="180" x2="300" y2="150" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="120" y1="230" x2="300" y2="195" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+  <line x1="300" y1="150" x2="480" y2="155" stroke="#34d399" stroke-width="2.5"/>
+  <line x1="300" y1="195" x2="480" y2="205" stroke="#475569" stroke-width="1.5" opacity="0.6"/>
+  <text x="120" y="315" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Input (4)</text>
+  <text x="300" y="315" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Hidden (5)</text>
+  <text x="480" y="315" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Output (3)</text>
+</svg>

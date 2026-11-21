@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Alex Rivera, Full-Stack Web Developer specializing in accessible, responsive web applications and distributed systems.">
+  <title>Alex Rivera | Full-Stack Web Developer Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Immediate theme check to prevent flash of wrong theme (FOUC) */
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <script src="js/theme.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" aria-label="Alex Rivera home page">
+        <span class="brand-text">Alex Rivera</span>
+      </a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☀️</span>
+          <span class="theme-label">Light</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-container">
+        <div class="hero-content">
+          <p class="hero-greeting">Hi there, I am</p>
+          <h1 id="hero-title" class="hero-title">Alex Rivera</h1>
+          <p class="hero-subtitle">Full-Stack Web Developer &amp; Systems Engineer</p>
+          <p class="hero-description">
+            I craft accessible, fast, and resilient web experiences. Focused on semantic HTML, modern CSS architecture, vanilla JavaScript performance, and reliable backend services.
+          </p>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-primary">Explore Projects</a>
+            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="assets/images/profile.svg" alt="Portrait illustration of Alex Rivera wearing glasses and smiling" class="profile-image" width="280" height="280" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-section" aria-labelledby="about-heading">
+      <div class="section-container">
+        <h2 id="about-heading" class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am a Computer Science senior specializing in advanced web technologies and systems engineering. My engineering philosophy centers on web fundamentals: prioritizing semantic structure, progressive enhancement, universal accessibility (WCAG 2.1 AA), and zero bloat.
+            </p>
+            <p>
+              Whether designing audio signal visualizers with Web Audio API, writing distributed consensus prototypes in Python, or hand-crafting responsive layouts that adapt to any screen, I take pride in clean code, rigorous testing, and empathetic user experiences.
+            </p>
+          </div>
+          <div class="about-highlights">
+            <article class="highlight-card">
+              <h3 class="highlight-title">Performance First</h3>
+              <p class="highlight-desc">Near-instant loads, minimal DOM overhead, and fluid 60 FPS client interactions without heavy dependencies.</p>
+            </article>
+            <article class="highlight-card">
+              <h3 class="highlight-title">Accessible by Default</h3>
+              <p class="highlight-desc">Semantic landmarks, strict heading hierarchies, full keyboard navigation, and high-contrast color tokens.</p>
+            </article>
+            <article class="highlight-card">
+              <h3 class="highlight-title">Modern Web Standards</h3>
+              <p class="highlight-desc">Embracing CSS Grid, Flexbox, custom properties, native dialogs, and ES6+ browser standards.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" aria-labelledby="skills-heading">
+      <div class="section-container">
+        <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+          <article class="skill-category">
+            <h3 class="skill-category-title">Frontend Development</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Semantic HTML5 &amp; Web Standards</li>
+              <li class="skill-item">CSS3 (Grid, Flexbox, Custom Properties)</li>
+              <li class="skill-item">Vanilla JavaScript (ES6+, DOM APIs)</li>
+              <li class="skill-item">Accessibility (WCAG 2.1 AA, ARIA)</li>
+              <li class="skill-item">Responsive &amp; Mobile-First Design</li>
+              <li class="skill-item">Web Audio &amp; Canvas APIs</li>
+            </ul>
+          </article>
+          <article class="skill-category">
+            <h3 class="skill-category-title">Backend &amp; Languages</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Python 3 &amp; FastAPI</li>
+              <li class="skill-item">Node.js &amp; Express</li>
+              <li class="skill-item">TypeScript</li>
+              <li class="skill-item">C++ (Algorithms &amp; Systems)</li>
+              <li class="skill-item">PostgreSQL &amp; SQLite</li>
+              <li class="skill-item">RESTful API Design &amp; Architecture</li>
+            </ul>
+          </article>
+          <article class="skill-category">
+            <h3 class="skill-category-title">Tools &amp; Engineering</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Git &amp; GitHub Actions</li>
+              <li class="skill-item">Google Lighthouse &amp; DevTools</li>
+              <li class="skill-item">W3C HTML &amp; CSS Validators</li>
+              <li class="skill-item">Linux / Bash Shell</li>
+              <li class="skill-item">Vite &amp; Native ES Modules</li>
+              <li class="skill-item">Test-Driven Development</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p class="footer-title">Alex Rivera</p>
+        <p class="footer-tagline">Building clean, accessible, standards-compliant web systems.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Social and External Links">
+        <ul class="footer-links">
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-copy">
+        <p>&copy; 2026 Alex Rivera. Built with semantic HTML, modern CSS, and vanilla JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

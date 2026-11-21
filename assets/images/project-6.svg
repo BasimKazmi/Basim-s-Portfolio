@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360" role="img" aria-label="Real-time Weather &amp; Climate Station analytics UI">
+  <rect width="600" height="360" fill="#0f172a"/>
+  <rect x="40" y="30" width="520" height="300" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <circle cx="70" cy="55" r="6" fill="#ef4444"/>
+  <circle cx="90" cy="55" r="6" fill="#eab308"/>
+  <circle cx="110" cy="55" r="6" fill="#22c55e"/>
+  <text x="300" y="60" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">Atmospheric Telemetry &amp; Radar Dashboard</text>
+  <!-- Weather Icon Sun & Cloud -->
+  <g transform="translate(100, 110)">
+    <circle cx="45" cy="45" r="24" fill="#f59e0b"/>
+    <path d="M40 50 A 18 18 0 0 1 70 50 A 14 14 0 0 1 85 64 A 12 12 0 0 1 74 76 L 30 76 A 15 15 0 0 1 20 56 A 16 16 0 0 1 40 50 Z" fill="#e2e8f0" opacity="0.9"/>
+  </g>
+  <text x="210" y="145" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="34" font-weight="bold">24°C</text>
+  <text x="210" y="175" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Partly Cloudy · Wind 12 km/h</text>
+  <!-- Chart Line -->
+  <path d="M 80 280 L 150 250 L 220 265 L 290 220 L 360 235 L 430 195 L 500 210" fill="none" stroke="#38bdf8" stroke-width="4"/>
+  <circle cx="430" cy="195" r="5" fill="#38bdf8"/>
+  <circle cx="500" cy="210" r="5" fill="#38bdf8"/>
+</svg>
