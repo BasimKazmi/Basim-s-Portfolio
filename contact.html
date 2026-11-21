@@ -7,6 +7,7 @@
   <title>Contact | Basim Kazmi Portfolio</title>
   <link rel="stylesheet" href="css/styles.css">
   <script>
+    /* Immediate theme check to prevent flash of wrong theme (FOUC) */
     (function() {
       var saved = localStorage.getItem('theme');
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -44,16 +45,18 @@
       <div class="section-container">
         <h1 class="page-title">Get in Touch</h1>
         <p class="page-subtitle">
-          Have an interesting project, collaboration opportunity, or question? Send a message using the form below.
+          Have an interesting project, collaboration opportunity, or question about web development? Send a message using the form below.
         </p>
       </div>
     </div>
 
     <section class="contact-section" aria-label="Contact form section">
       <div class="section-container contact-container">
+        <!-- Live status banner for submission feedback -->
         <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
 
         <form id="contact-form" class="contact-form" novalidate>
+          <!-- Field 1: Name -->
           <div class="form-group" id="group-name">
             <label for="contact-name" class="form-label">
               Full Name <span class="required-indicator" aria-hidden="true">*</span>
@@ -71,6 +74,7 @@
             <p class="error-message" id="name-error" aria-live="polite"></p>
           </div>
 
+          <!-- Field 2: Email -->
           <div class="form-group" id="group-email">
             <label for="contact-email" class="form-label">
               Email Address <span class="required-indicator" aria-hidden="true">*</span>
@@ -87,6 +91,7 @@
             <p class="error-message" id="email-error" aria-live="polite"></p>
           </div>
 
+          <!-- Field 3: Subject -->
           <div class="form-group" id="group-subject">
             <label for="contact-subject" class="form-label">
               Subject <span class="required-indicator" aria-hidden="true">*</span>
@@ -106,6 +111,7 @@
             <p class="error-message" id="subject-error" aria-live="polite"></p>
           </div>
 
+          <!-- Field 4: Referral Source Radio Group -->
           <fieldset class="form-group form-fieldset" id="group-source" aria-describedby="source-error">
             <legend class="form-legend">
               How did you hear about me? <span class="required-indicator" aria-hidden="true">*</span>
@@ -131,6 +137,7 @@
             <p class="error-message" id="source-error" aria-live="polite"></p>
           </fieldset>
 
+          <!-- Field 5: Message -->
           <div class="form-group" id="group-message">
             <label for="contact-message" class="form-label">
               Your Message (minimum 20 characters) <span class="required-indicator" aria-hidden="true">*</span>
@@ -147,6 +154,7 @@
             <p class="error-message" id="message-error" aria-live="polite"></p>
           </div>
 
+          <!-- Field 6: Consent Checkbox -->
           <div class="form-group form-checkbox-group" id="group-consent">
             <label class="checkbox-label" for="contact-consent">
               <input 
@@ -160,6 +168,7 @@
             <p class="error-message" id="consent-error" aria-live="polite"></p>
           </div>
 
+          <!-- Field 7: Submit Button -->
           <div class="form-actions">
             <button type="submit" id="submit-btn" class="btn btn-primary form-submit-btn">
               Send Message
@@ -178,7 +187,7 @@
       </div>
       <nav class="footer-nav" aria-label="Social and External Links">
         <ul class="footer-links">
-          <li><a href="https://github.com/BasimKazmi" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
           <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
           <li><a href="contact.html" class="footer-link">Contact</a></li>
         </ul>

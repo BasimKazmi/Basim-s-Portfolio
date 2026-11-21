@@ -1,61 +1,98 @@
+
 (function () {
   'use strict';
 
   const STORAGE_KEY = 'theme';
   const THEME_DARK = 'dark';
   const THEME_LIGHT = 'light';
+
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-  // Read saved theme or fallback to system preference
+  /**
+   * Determine the active theme based on localStorage, falling back to OS preference.
+   * @returns {'dark' | 'light'}
+   */
   function getPreferredTheme() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === THEME_DARK || stored === THEME_LIGHT) return stored;
+    const storedTheme = localStorage.getItem(STORAGE_KEY);
+    if (storedTheme === THEME_DARK || storedTheme === THEME_LIGHT) {
+      return storedTheme;
+    }
     return mediaQuery.matches ? THEME_DARK : THEME_LIGHT;
   }
 
-  // Apply theme to document root and sync button
-  function applyTheme(theme, persist) {
+  /**
+   * Apply the theme to the root element and sync UI controls.
+   * @param {'dark' | 'light'} theme
+   * @param {boolean} persist - Whether to write to localStorage
+   */
+  function applyTheme(theme, persist = false) {
     document.documentElement.setAttribute('data-theme', theme);
-    if (persist) localStorage.setItem(STORAGE_KEY, theme);
+
+    if (persist) {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
+
     syncToggleButton(theme);
   }
 
-  // Update button text, icon, and aria attributes
+  /**
+   * Sync the theme toggle button's text, icon, and accessibility attributes.
+   * @param {'dark' | 'light'} theme
+   */
   function syncToggleButton(theme) {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
 
-    const iconSpan = btn.querySelector('.theme-icon');
-    const labelSpan = btn.querySelector('.theme-label');
+    const iconSpan = toggleBtn.querySelector('.theme-icon');
+    const labelSpan = toggleBtn.querySelector('.theme-label');
     const isDark = theme === THEME_DARK;
 
-    btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    if (iconSpan) iconSpan.textContent = isDark ? '🌙' : '☀️';
-    if (labelSpan) labelSpan.textContent = isDark ? 'Dark' : 'Light';
+    toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    toggleBtn.setAttribute(
+      'aria-label',
+      isDark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+
+    if (iconSpan) {
+      iconSpan.textContent = isDark ? '🌙' : '☀️';
+    }
+
+    if (labelSpan) {
+      labelSpan.textContent = isDark ? 'Dark' : 'Light';
+    }
   }
 
-  // Toggle current theme
+  /**
+   * Toggle between light and dark themes upon user interaction.
+   */
   function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
-    const next = current === THEME_DARK ? THEME_LIGHT : THEME_DARK;
-    applyTheme(next, true);
+    const currentTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+    const nextTheme = currentTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
+    applyTheme(nextTheme, true);
   }
 
-  // Initialize theme controls and event listeners
+  /**
+   * Initialize theme settings and event listeners when DOM is loaded.
+   */
   function initTheme() {
-    applyTheme(getPreferredTheme(), false);
+    const activeTheme = getPreferredTheme();
+    applyTheme(activeTheme, false);
 
-    const btn = document.getElementById('theme-toggle');
-    if (btn) btn.addEventListener('click', toggleTheme);
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', toggleTheme);
+    }
 
+    // Sync with OS preference changes if user hasn't explicitly set a preference
     mediaQuery.addEventListener('change', (e) => {
-      if (!localStorage.getItem(STORAGE_KEY)) {
+      const storedTheme = localStorage.getItem(STORAGE_KEY);
+      if (!storedTheme) {
         applyTheme(e.matches ? THEME_DARK : THEME_LIGHT, false);
       }
     });
   }
 
+  // Run initialization when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initTheme);
   } else {
