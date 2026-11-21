@@ -8,8 +8,9 @@
 
 * **Course:** CS-554 Advanced Web Technologies (Fall 2026) — Instructor: Abdul Jamil
 * **Assignment:** Assignment 1, Version A — Responsive Developer Portfolio
-* **Developer:** Alex Rivera (Student Developer)
-* **Live GitHub Pages URL:** [https://alexrivera.github.io/cs554-portfolio/](https://alexrivera.github.io/cs554-portfolio/)
+* **Developer:** Basim Kazmi (Student Developer)
+* **Repository:** [https://github.com/BasimKazmi/cs554-portfolio_ADWeb_Assignmet1](https://github.com/BasimKazmi/cs554-portfolio_ADWeb_Assignmet1)
+* **Live GitHub Pages URL:** [https://basimkazmi.github.io/cs554-portfolio_ADWeb_Assignmet1/](https://basimkazmi.github.io/cs554-portfolio_ADWeb_Assignmet1/)
 
 ---
 
