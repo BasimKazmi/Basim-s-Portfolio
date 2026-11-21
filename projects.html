@@ -7,7 +7,6 @@
   <title>Projects | Basim Kazmi Portfolio</title>
   <link rel="stylesheet" href="css/styles.css">
   <script>
-    /* Immediate theme check to prevent flash of wrong theme (FOUC) */
     (function() {
       var saved = localStorage.getItem('theme');
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -45,18 +44,17 @@
       <div class="section-container">
         <h1 class="page-title">Featured Projects</h1>
         <p class="page-subtitle">
-          An interactive showcase of full-stack web applications, systems tools, and accessible user interfaces. Filter by technology or search keywords in real time.
+          An interactive showcase of systems tools, machine learning pipelines, and software projects. Filter by technology or search keywords in real time.
         </p>
       </div>
     </div>
 
-    <!-- Filter Controls Section -->
     <section class="filters-section" aria-label="Project filter controls">
       <div class="section-container">
         <form class="filters-form" id="projects-filter-form" onsubmit="event.preventDefault();">
           <div class="filter-group">
             <label for="search-input" class="filter-label">Search projects by title or keyword:</label>
-            <input type="search" id="search-input" name="search" class="filter-input" placeholder="e.g. Audio, Python, Consensus, AST..." autocomplete="off">
+            <input type="search" id="search-input" name="search" class="filter-input" placeholder="e.g. Python, Solar, C++, Compiler, SQL..." autocomplete="off">
           </div>
           <div class="filter-group">
             <label for="tech-filter" class="filter-label">Filter by technology:</label>
@@ -73,28 +71,23 @@
           </div>
         </form>
 
-        <!-- Live Status Region for Assistive Technology -->
         <div id="projects-status" class="projects-status" aria-live="polite">
-          Showing 6 of 6 projects
+          Showing 7 of 7 projects
         </div>
       </div>
     </section>
 
-    <!-- Projects Grid Section -->
     <section class="projects-display-section" aria-label="Project cards list">
       <div class="section-container">
-        <!-- Rendered dynamically by js/projects.js via safe DOM APIs -->
         <div id="projects-grid" class="projects-grid"></div>
 
-        <!-- Empty state message -->
         <div id="no-projects-msg" class="empty-state" hidden>
           <p class="empty-state-title">No projects found</p>
-          <p class="empty-state-text">No projects matched your combined search query and technology filter. Please try clearing or modifying your filters.</p>
+          <p class="empty-state-text">No projects matched your search and filter criteria. Please try modifying your query.</p>
         </div>
       </div>
     </section>
 
-    <!-- Project Details Modal (Dialog) -->
     <dialog id="project-modal" class="project-modal" aria-labelledby="modal-title" aria-describedby="modal-desc">
       <div class="modal-dialog-content">
         <header class="modal-header">
@@ -110,7 +103,7 @@
             </div>
             <div class="modal-meta-item">
               <span class="modal-meta-label">Role:</span>
-              <span id="modal-role" class="modal-meta-value">Lead Developer</span>
+              <span id="modal-role" class="modal-meta-value">Developer</span>
             </div>
           </div>
           <div class="modal-tech-section">
@@ -118,7 +111,7 @@
             <ul id="modal-tech" class="tech-badge-list"></ul>
           </div>
           <div class="modal-details-section">
-            <span class="modal-meta-label">Architecture &amp; Highlights:</span>
+            <span class="modal-meta-label">Highlights &amp; Architecture:</span>
             <p id="modal-details" class="modal-extended-details"></p>
           </div>
           <div class="modal-actions">
@@ -137,7 +130,7 @@
       </div>
       <nav class="footer-nav" aria-label="Social and External Links">
         <ul class="footer-links">
-          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+          <li><a href="https://github.com/BasimKazmi" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
           <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
           <li><a href="contact.html" class="footer-link">Contact</a></li>
         </ul>

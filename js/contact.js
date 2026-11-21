@@ -1,19 +1,10 @@
-/**
- * ==========================================================================
- * CS-554 Assignment 1: Contact Form Validation (js/contact.js)
- * Accessible client-side validation, inline error states, and ARIA messaging.
- * ==========================================================================
- */
-
 (function () {
   'use strict';
 
   const form = document.getElementById('contact-form');
   const statusBanner = document.getElementById('form-status');
-
   if (!form) return;
 
-  // Form controls
   const nameInput = document.getElementById('contact-name');
   const emailInput = document.getElementById('contact-email');
   const subjectSelect = document.getElementById('contact-subject');
@@ -22,7 +13,6 @@
   const radioButtons = form.querySelectorAll('input[name="referral_source"]');
   const fieldset = document.getElementById('group-source');
 
-  // Error display elements
   const nameError = document.getElementById('name-error');
   const emailError = document.getElementById('email-error');
   const subjectError = document.getElementById('subject-error');
@@ -30,57 +20,29 @@
   const messageError = document.getElementById('message-error');
   const consentError = document.getElementById('consent-error');
 
-  /**
-   * Standard email regex pattern conforming to HTML5 spec requirements.
-   */
   const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  /**
-   * Display an error message and set accessibility attributes for a field.
-   * @param {HTMLElement} inputEl
-   * @param {HTMLElement} errorEl
-   * @param {string} message
-   */
   function showError(inputEl, errorEl, message) {
-    if (errorEl) {
-      errorEl.textContent = message;
-    }
-    if (inputEl) {
-      inputEl.setAttribute('aria-invalid', 'true');
-    }
+    if (errorEl) errorEl.textContent = message;
+    if (inputEl) inputEl.setAttribute('aria-invalid', 'true');
   }
 
-  /**
-   * Clear error message and reset accessibility attributes for a field.
-   * @param {HTMLElement} inputEl
-   * @param {HTMLElement} errorEl
-   */
   function clearError(inputEl, errorEl) {
-    if (errorEl) {
-      errorEl.textContent = '';
-    }
-    if (inputEl) {
-      inputEl.removeAttribute('aria-invalid');
-    }
+    if (errorEl) errorEl.textContent = '';
+    if (inputEl) inputEl.removeAttribute('aria-invalid');
   }
 
-  /**
-   * Validate all form fields.
-   * @returns {{ isValid: boolean, firstInvalid: HTMLElement|null }}
-   */
+  // Validate form fields
   function validateForm() {
     let isValid = true;
     let firstInvalid = null;
 
-    // 1. Name validation (trimmed length >= 3)
     const nameVal = nameInput ? nameInput.value.trim() : '';
     if (nameVal.length < 3) {
       showError(
         nameInput,
         nameError,
-        nameVal.length === 0
-          ? 'Please enter your full name.'
-          : 'Name must be at least 3 characters long.'
+        nameVal.length === 0 ? 'Please enter your full name.' : 'Name must be at least 3 characters long.'
       );
       isValid = false;
       if (!firstInvalid) firstInvalid = nameInput;
@@ -88,7 +50,6 @@
       clearError(nameInput, nameError);
     }
 
-    // 2. Email validation (non-empty and valid pattern)
     const emailVal = emailInput ? emailInput.value.trim() : '';
     if (emailVal.length === 0) {
       showError(emailInput, emailError, 'Please enter your email address.');
@@ -102,7 +63,6 @@
       clearError(emailInput, emailError);
     }
 
-    // 3. Subject validation (valid option selected)
     const subjectVal = subjectSelect ? subjectSelect.value : '';
     if (!subjectVal) {
       showError(subjectSelect, subjectError, 'Please select a reason for your inquiry.');
@@ -112,7 +72,6 @@
       clearError(subjectSelect, subjectError);
     }
 
-    // 4. Referral source validation (at least one radio selected)
     const checkedRadio = form.querySelector('input[name="referral_source"]:checked');
     if (!checkedRadio) {
       showError(fieldset, sourceError, 'Please let us know how you heard about me.');
@@ -122,15 +81,12 @@
       clearError(fieldset, sourceError);
     }
 
-    // 5. Message validation (trimmed length >= 20)
     const messageVal = messageInput ? messageInput.value.trim() : '';
     if (messageVal.length < 20) {
       showError(
         messageInput,
         messageError,
-        messageVal.length === 0
-          ? 'Please enter your message.'
-          : `Message must be at least 20 characters long (currently ${messageVal.length} characters).`
+        messageVal.length === 0 ? 'Please enter your message.' : `Message must be at least 20 characters long (currently ${messageVal.length}).`
       );
       isValid = false;
       if (!firstInvalid) firstInvalid = messageInput;
@@ -138,7 +94,6 @@
       clearError(messageInput, messageError);
     }
 
-    // 6. Consent checkbox validation
     if (consentCheckbox && !consentCheckbox.checked) {
       showError(consentCheckbox, consentError, 'You must agree to the data processing consent to proceed.');
       isValid = false;
@@ -150,64 +105,45 @@
     return { isValid, firstInvalid };
   }
 
-  /**
-   * Set up live inline validation clearance as the user types or changes inputs.
-   */
+  // Clear errors as user modifies inputs
   function setupLiveValidation() {
     if (nameInput) {
       nameInput.addEventListener('input', () => {
-        if (nameInput.value.trim().length >= 3) {
-          clearError(nameInput, nameError);
-        }
+        if (nameInput.value.trim().length >= 3) clearError(nameInput, nameError);
       });
     }
 
     if (emailInput) {
       emailInput.addEventListener('input', () => {
-        if (EMAIL_REGEX.test(emailInput.value.trim())) {
-          clearError(emailInput, emailError);
-        }
+        if (EMAIL_REGEX.test(emailInput.value.trim())) clearError(emailInput, emailError);
       });
     }
 
     if (subjectSelect) {
       subjectSelect.addEventListener('change', () => {
-        if (subjectSelect.value) {
-          clearError(subjectSelect, subjectError);
-        }
+        if (subjectSelect.value) clearError(subjectSelect, subjectError);
       });
     }
 
     radioButtons.forEach((radio) => {
-      radio.addEventListener('change', () => {
-        clearError(fieldset, sourceError);
-      });
+      radio.addEventListener('change', () => clearError(fieldset, sourceError));
     });
 
     if (messageInput) {
       messageInput.addEventListener('input', () => {
-        if (messageInput.value.trim().length >= 20) {
-          clearError(messageInput, messageError);
-        }
+        if (messageInput.value.trim().length >= 20) clearError(messageInput, messageError);
       });
     }
 
     if (consentCheckbox) {
       consentCheckbox.addEventListener('change', () => {
-        if (consentCheckbox.checked) {
-          clearError(consentCheckbox, consentError);
-        }
+        if (consentCheckbox.checked) clearError(consentCheckbox, consentError);
       });
     }
   }
 
-  /**
-   * Handle form submission event.
-   * @param {Event} event
-   */
   function handleSubmit(event) {
     event.preventDefault();
-
     const { isValid, firstInvalid } = validateForm();
 
     if (!isValid) {
@@ -216,15 +152,10 @@
         statusBanner.textContent = 'Please correct the highlighted errors below before submitting.';
         statusBanner.removeAttribute('hidden');
       }
-
-      // Shift focus to the first invalid control
-      if (firstInvalid) {
-        firstInvalid.focus();
-      }
+      if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    // Success State
     if (statusBanner) {
       statusBanner.className = 'form-status form-status-success';
       statusBanner.textContent = 'Thank you! Your message has been sent successfully. I will get back to you soon.';
@@ -232,10 +163,7 @@
       statusBanner.focus();
     }
 
-    // Reset form fields
     form.reset();
-
-    // Clear all error states
     clearError(nameInput, nameError);
     clearError(emailInput, emailError);
     clearError(subjectSelect, subjectError);

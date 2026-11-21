@@ -112,7 +112,6 @@ All showcased projects are real open-source systems pulled directly from **[Basi
 │   └── contact.js          # Custom JS form validation + inline ARIA errors
 ├── assets/
 │   └── images/             # Vector SVGs with explicit dimensions (profile, project previews)
-├── GEMINI.md               # Assignment specification & requirements checklist
 └── README.md               # Documentation, screenshots, and live deployment link
 ```
 
